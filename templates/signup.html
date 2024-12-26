@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - BookStore</title>
+    <!-- Google Fonts for a modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap for responsive layout -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .container {
+            max-width: 550px;
+            margin-top: 100px;
+        }
+
+        .card {
+            border-radius: 12px;
+            border: none;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #1d3c6c;
+            color: white;
+            font-size: 32px;
+            text-align: center;
+            padding: 30px 0;
+            border-radius: 12px 12px 0 0;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        .form-control {
+            border-radius: 12px;
+            font-size: 16px;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #1d3c6c;
+            box-shadow: 0 0 10px rgba(29, 60, 108, 0.2);
+        }
+
+        .form-btn {
+            background-color: #1d3c6c;
+            color: white;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            height: 50px;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-btn:hover {
+            background-color: #0e2d53;
+            cursor: pointer;
+        }
+
+        .form-btn:active {
+            background-color: #0c243e;
+        }
+
+        .links a {
+            color: #1d3c6c;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .links a:hover {
+            color: #3498db;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-top: 40px;
+        }
+
+        .footer a {
+            color: #1d3c6c;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #3498db;
+        }
+
+        .card-body {
+            padding: 40px;
+        }
+
+        .mb-3 {
+            margin-bottom: 20px;
+        }
+
+        .password-icon {
+            cursor: pointer;
+        }
+
+        /* Animation for form submission */
+        @keyframes form-submit {
+            0% {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .form-container {
+            animation: form-submit 1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="card form-container">
+            <div class="card-header">
+                Create Account
+            </div>
+            <div class="card-body">
+                <form action="/signup" method="POST">
+                    <!-- First Name -->
+                    <div class="mb-3">
+                        <label for="firstName" class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter your first name" required>
+                    </div>
+
+                    <!-- Last Name -->
+                    <div class="mb-3">
+                        <label for="lastName" class="form-label">Last Name</label>
+                        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter your last name" required>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+
+                    <!-- Mobile Number -->
+                    <div class="mb-3">
+                        <label for="mobile" class="form-label">Mobile Number</label>
+                        <input type="tel" class="form-control" id="mobile" name="mobile" placeholder="Enter your mobile number" required>
+                    </div>
+
+                    <!-- Address -->
+                    <div class="mb-3">
+                        <label for="address" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="address" name="address" placeholder="Enter your address" required>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="mb-3 position-relative">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                        <!-- <span class="password-icon position-absolute top-50 end-0 translate-middle-y me-3" onclick="togglePassword()">👁️</span> -->
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div class="mb-3">
+                        <label for="confirmPassword" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password" required>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="form-btn">Sign Up</button>
+                </form>
+
+                <!-- Links for Login and Forgot Password -->
+                <div class="links mt-3 text-center">
+                    <p>Already have an account? <a href="login.html">Login</a></p>
+                    <p><a href="forgot-password.html">Forgot Password?</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 BookStore. All Rights Reserved. | <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-conditions.html">Terms & Conditions</a></p>
+    </div>
+
+    <!-- Add Bootstrap JS (Optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Toggle password visibility
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+            const passwordFieldType = passwordInput.type === 'password' ? 'text' : 'password';
+            passwordInput.type = passwordFieldType;
+            confirmPasswordInput.type = passwordFieldType;
+        }
+    </script>
+
+</body>
+</html>

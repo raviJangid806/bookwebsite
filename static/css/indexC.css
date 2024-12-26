@@ -1,0 +1,366 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* Navbar Styling */
+.navbar {
+    background: #000;
+    /* Black background */
+    padding: 15px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    color: #fff;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/* Logo Styling */
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ffe600;
+    text-decoration: none;
+}
+
+.logo:hover {
+    color: #1e90ff;
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.1rem;
+    position: relative;
+}
+
+.nav-links a:hover {
+    color: #1e90ff;
+}
+
+/* Dropdown Menu */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-btn {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+}
+
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    color: #000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none;
+    flex-direction: column;
+    min-width: 200px;
+    border-radius: 5px;
+    z-index: 100;
+}
+
+.dropdown-content a {
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #000;
+    font-size: 1rem;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s;
+}
+
+.dropdown-content a:hover {
+    background: #1e90ff;
+    color: #fff;
+}
+
+.dropdown:hover .dropdown-content {
+    display: flex;
+}
+
+/* Search Bar */
+.search-bar {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.search-bar input {
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    flex-grow: 1;
+    outline: none;
+}
+
+.search-bar .search-btn {
+    background: #1e90ff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background-color 0.3s;
+}
+
+.search-bar .search-btn:hover {
+    background: #0056b3;
+}
+
+.search-bar .search-btn i {
+    font-size: 1.1rem;
+}
+
+/* User Options */
+.user-options .btn {
+    text-decoration: none;
+    padding: 8px 20px;
+    margin-left: 10px;
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.login-btn {
+    background-color: transparent;
+    color: #1e90ff;
+    border: 1px solid #1e90ff;
+}
+
+.signup-btn {
+    background-color: #ffe600;
+    color: #000;
+}
+
+.login-btn:hover {
+    background-color: #1e90ff;
+    color: #fff;
+}
+
+.signup-btn:hover {
+    background-color: #ffc107;
+    color: #000;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .search-bar {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .user-options {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .dropdown-content {
+        position: static;
+        display: none;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: flex;
+    }
+}
+
+/* Carousel Container Styling */
+.carousel-container {
+    margin: 20px auto;
+    max-width: 1200px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Carousel Captions */
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Adjust Indicator Colors */
+.carousel-indicators [data-bs-target] {
+    background-color: #fff;
+}
+
+.carousel-indicators [data-bs-target].active {
+    background-color: #1e90ff;
+}
+
+/* Navbar Styling (Optional) */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: #000;
+    color: #fff;
+}
+
+
+/* hhhh */
+.popular-books {
+    background-color: #f8f9fa;
+}
+
+.popular-books h2 {
+    font-weight: bold;
+    color: #343a40;
+}
+
+.horizontal-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    /* Allows horizontal scrolling */
+    gap: 20px;
+    /* Space between cards */
+    padding: 10px 0;
+    scroll-snap-type: x mandatory;
+}
+
+.card {
+    flex: 0 0 auto;
+    /* Prevents the cards from shrinking */
+    width: 200px;
+    /* Card width */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    scroll-snap-align: start;
+    /* Snap the cards into place */
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+    border-radius: 10px 10px 0 0;
+    height: 220px;
+    object-fit: cover;
+}
+
+.card-footer {
+    background: #fff;
+}
+
+/* ---- */
+.footer {
+    background-color: #212529;
+    color: #ddd;
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
+.footer-heading {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.footer-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+.footer-link {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: #f1c40f;
+    /* Bright yellow on hover for better contrast */
+}
+
+.social-icon {
+    margin-right: 20px;
+}
+
+.social-icon a {
+    font-size: 20px;
+    color: #ccc;
+    transition: color 0.3s ease;
+}
+
+.social-icon a:hover {
+    color: #f1c40f;
+    /* Bright yellow on hover for social media icons */
+}
+
+.footer-bottom-text {
+    font-size: 14px;
+    color: #aaa;
+    margin-top: 20px;
+}
+
+.footer .list-unstyled {
+    padding-left: 0;
+}
+
+.footer .d-flex li {
+    margin-right: 20px;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .footer-heading {
+        font-size: 16px;
+    }
+
+    .footer-text,
+    .footer-bottom-text {
+        font-size: 13px;
+    }
+
+    .footer .row {
+        text-align: center;
+    }
+
+    .footer .d-flex {
+        justify-content: center;
+    }
+}
