@@ -1,0 +1,112 @@
+body {
+    background-color: #f4f7f9;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.checkout-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.checkout-header h1 {
+    font-weight: 600;
+    font-size: 36px;
+    color: #1d3c6c;
+}
+
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.card-header {
+    background-color: #1d3c6c;
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 15px 20px;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.book-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.book-item img {
+    width: 80px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+.book-item h5 {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.book-item p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+.total-section {
+    text-align: right;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.btn-primary {
+    background-color: #1d3c6c;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0e2d53;
+}
+
+.form-control {
+    border-radius: 8px;
+}
+
+.footer {
+    text-align: center;
+    font-size: 14px;
+    color: #7f8c8d;
+    margin-top: 40px;
+}
+.btn-primary {
+    background-color: #1d3c6c;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0e2d53;
+}
+
+.hidden-section {
+    display: none;
+}

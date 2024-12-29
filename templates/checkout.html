@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - BookStore</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/bookwebsite/static/css/checkoutC.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Checkout Header -->
+        <div class="checkout-header">
+            <h1>Checkout</h1>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="card">
+            <div class="card-header">Order Summary</div>
+            <div class="card-body">
+                <div class="book-item">
+                    <img src="https://via.placeholder.com/80x100" alt="Book">
+                    <div>
+                        <h5>The Alchemist</h5>
+                        <p>Quantity: 1</p>
+                        <p>Price: $15.00</p>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <img src="https://via.placeholder.com/80x100" alt="Book">
+                    <div>
+                        <h5>Rich Dad Poor Dad</h5>
+                        <p>Quantity: 2</p>
+                        <p>Price: $20.00</p>
+                    </div>
+                </div>
+                <div class="total-section">
+                    Total: $55.00
+                </div>
+            </div>
+        </div>
+
+
+        <div id="shipingAddressSection">
+            <!-- Shipping Address Section -->
+            <div class="card">
+                <div class="card-header">Shipping Address</div>
+                <div class="card-body">
+                    <!-- Saved Addresses -->
+                    <label for="savedAddresses" class="form-label">Select an Address</label>
+                    <select class="form-control address-select" id="savedAddresses">
+                        <option value="">-- Choose a saved address --</option>
+                        <!-- Example options fetched from the database -->
+                        <option value="1">123 Main Street, New York, NY 10001</option>
+                        <option value="2">456 Park Avenue, Los Angeles, CA 90001</option>
+                    </select>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Button to Show/Hide the New Address Section -->
+        <button id="newAddressBtn" class="btn btn-primary mb-3">New Shipping Address</button>
+
+        <!-- Shipping Address Section -->
+        <div id="newAddressSection" class="hidden-section">
+            <div class="card">
+                <div class="card-header">Shipping Address</div>
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Address</label>
+                            <input type="text" class="form-control" id="address" placeholder="1234 Main St">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="city" class="form-label">City</label>
+                                <input type="text" class="form-control" id="city" placeholder="New York">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="zip" class="form-label">Zip Code</label>
+                                <input type="text" class="form-control" id="zip" placeholder="10001">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="BillingAddress">
+            <!-- Billing Address Section -->
+            <div class="card">
+                <div class="card-header">Billing Address</div>
+                <div class="card-body">
+                    <!-- Saved Addresses -->
+                    <label for="savedAddresses" class="form-label">Select an Address</label>
+                    <select class="form-control address-select" id="savedAddresses">
+                        <option value="">-- Choose a saved address --</option>
+                        <!-- Example options fetched from the database -->
+                        <option value="1">123 Main Street, New York, NY 10001</option>
+                        <option value="2">456 Park Avenue, Los Angeles, CA 90001</option>
+                    </select>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Button to Show/Hide the New Address Section -->
+        <button id="newBillingAddressBtn" class="btn btn-primary mb-3">New Billing Address</button>
+
+        <!-- Shipping Address Section -->
+        <div id="newBillingAddressSection" class="hidden-section">
+            <div class="card">
+                <div class="card-header">Billing Address</div>
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Address</label>
+                            <input type="text" class="form-control" id="address" placeholder="1234 Main St">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="city" class="form-label">City</label>
+                                <input type="text" class="form-control" id="city" placeholder="New York">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="zip" class="form-label">Zip Code</label>
+                                <input type="text" class="form-control" id="zip" placeholder="10001">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Payment Options -->
+        <div class="card">
+            <div class="card-header">Payment Method</div>
+            <div class="card-body">
+                <form>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="paymentMethod" id="creditCard" checked>
+                        <label class="form-check-label" for="creditCard">
+                            Credit Card
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="paymentMethod" id="debitCard">
+                        <label class="form-check-label" for="debitCard">
+                            Debit Card
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="paymentMethod" id="cod">
+                        <label class="form-check-label" for="cod">
+                            Cash on Delivery
+                        </label>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Place Order -->
+        <div class="text-end mt-4">
+            <button class="btn btn-primary">Place Order</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 Epic Shelf. All Rights Reserved.</p>
+    </div>
+
+    <script>
+        const newAddressBtn = document.getElementById('newAddressBtn');
+        const newAddressSection = document.getElementById('newAddressSection');
+        const shipingAddress = document.getElementById('shipingAddressSection');
+        const billingAddressBtn = document.getElementById('newBillingAddressBtn');
+        const newBillingAddressSection = document.getElementById('newBillingAddressSection');
+        const billingAddress = document.getElementById('BillingAddress');
+        newAddressBtn.addEventListener('click', () => {
+            if (newAddressSection.style.display === 'none' || newAddressSection.style.display === '') {
+                newAddressSection.style.display = 'block';
+                shipingAddress.style.display = 'none';
+                newAddressBtn.innerText = 'Choose existing address';
+            } else {
+                newAddressSection.style.display = 'none';
+                shipingAddress.style.display = 'block';
+                newAddressBtn.innerText = 'New Address';
+            }
+        });
+        billingAddressBtn.addEventListener('click', () => {
+            if (newBillingAddressSection.style.display === 'none' || newBillingAddressSection.style.display === '') {
+                newBillingAddressSection.style.display = 'block';
+                billingAddress.style.display = 'none';
+                billingAddressBtn.innerText = 'Choose existing address';
+            } else {
+                newBillingAddressSection.style.display = 'none';
+                billingAddress.style.display = 'block';
+                billingAddressBtn.innerText = 'New Address';
+            }
+        });
+    </script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
