@@ -1,0 +1,36 @@
+<!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Function to update book details
+        function updateBookDetails() {
+            $.ajax({
+                url: '/api/get-book-details', // Replace with your API endpoint
+                method: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    // Update book details dynamically
+                    $('.book-info h3').text(data.title);
+                    $('.book-info .price').text(data.sellingPrice);
+                    $('.actual-price').text(data.actualPrice);
+                    $('.discount').text(data.discount);
+                    $('.author-details p:nth-child(1)').html(`<strong>Name:</strong> ${data.author.name}`);
+                    $('.author-details p:nth-child(2)').html(`<strong>Email:</strong> ${data.author.email}`);
+                    $('.author-details p:nth-child(3)').html(`<strong>Bio:</strong> ${data.author.bio}`);
+                    $('.book-category p:nth-child(1)').html(`<strong>Category:</strong> ${data.category}`);
+                    $('.book-category p:nth-child(2)').html(`<strong>Publication:</strong> ${data.publication}`);
+                    $('.book-isbn p:nth-child(1)').html(`<strong>ISBN-10:</strong> ${data.isbn10}`);
+                    $('.book-isbn p:nth-child(2)').html(`<strong>ISBN-13:</strong> ${data.isbn13}`);
+                    $('.book-description p').text(data.description);
+                },
+                error: function (xhr, status, error) {
+                    console.error('Failed to fetch book details:', error);
+                }
+            });
+        }
+
+        // Call the function to update book details
+        updateBookDetails();
+    });
+</script>
