@@ -1,0 +1,9 @@
+document.querySelector("tbody").addEventListener("input", function (event) {
+    if (event.target.classList.contains("quantity")) {
+        const row = event.target.closest("tr"); // Get the closest table row
+        const quantity = parseInt(event.target.value) || 1; // Get the quantity (default to 1 if invalid)
+        const price = parseFloat(row.querySelector(".price").textContent.replace("$", "")); // Extract price
+        const totalPrice = quantity * price; // Calculate total price
+        row.querySelector(".totalPricePerItem").textContent = `$${totalPrice.toFixed(2)}`; // Update total price
+    }
+});
