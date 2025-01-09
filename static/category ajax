@@ -1,0 +1,19 @@
+ $(document).ready(function () {
+    $(".dropdown-content a").click(function (e) {
+      e.preventDefault(); // Prevent default anchor behavior
+      const selectedText = $(this).text(); // Get the text of the clicked link
+
+      // AJAX call
+      $.ajax({
+        url: "/your-endpoint", // Replace with your server endpoint
+        type: "POST",
+        data: { category: selectedText },
+        success: function (response) {
+          console.log("Response:", response);
+        },
+        error: function (error) {
+          console.error("Error:", error);
+        }
+      });
+    });
+  });
