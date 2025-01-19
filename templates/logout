@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout Confirmation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to bottom, #f5f7fa, #c3cfe2);
+            color: #333;
+        }
+        .container {
+            text-align: center;
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            max-width: 400px;
+            width: 100%;
+        }
+        .container h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #444;
+        }
+        .container p {
+            font-size: 16px;
+            margin-bottom: 30px;
+            color: #666;
+        }
+        .logout-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .logout-btn:hover {
+            background-color: #0056b3;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #aaa;
+        }
+    </style>
+    <script>
+        function logout() {
+            // Simulate a logout by redirecting to a logout URL or clearing session storage
+            alert("You have been logged out.");
+            window.location.href = "login.html"; // Replace with your login page URL
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Logout Confirmation</h1>
+        <p>Are you sure you want to log out of your account? Make sure you have saved all your work.</p>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+        <div class="footer">&copy; 2025 Your Company. All rights reserved.</div>
+    </div>
+</body>
+</html>
