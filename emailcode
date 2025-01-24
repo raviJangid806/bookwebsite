@@ -1,0 +1,46 @@
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.stereotype.Service;
+
+@Service
+public class EmailService {
+
+    @Autowired
+    private JavaMailSender mailSender;
+
+    public void sendOrderConfirmationEmail(String recipientEmail, String orderId, String customerName, BookOrder[] bookOrders) {
+        String subject = "Order Confirmation - Your Order #" + orderId + " is Successful";
+        StringBuilder messageBody = new StringBuilder();
+
+        messageBody.append("Dear ").append(customerName).append(",\n\n")
+                .append("Thank you for your order! We're excited to let you know that your order has been successfully placed.\n\n")
+                .append("Here are the details of your order:\n\n");
+
+        double grandTotal = 0.0;
+
+        messageBody.append(String.format("%-30s %-10s %-10s %-15s\n", "Book Name", "Quantity", "Price", "Total"));
+        messageBody.append("-----------------------------------------------------------\n");
+
+        for (BookOrder book : bookOrders) {
+            double totalPrice = book.getQuantity() * book.getPricePerBook();
+            grandTotal += totalPrice;
+            messageBody.append(String.format("%-30s %-10d %-10.2f %-15.2f\n", 
+                book.getBookName(), book.getQuantity(), book.getPricePerBook(), totalPrice));
+        }
+
+        messageBody.append("\nGrand Total: ").append(String.format("%.2f", grandTotal)).append("\n\n")
+                .append("Order ID: ").append(orderId).append("\n\n")
+                .append("We will notify you once your order has been shipped.\n")
+                .append("If you have any questions, feel free to contact our support team.\n\n")
+                .append("Best regards,\n")
+                .append("Bookstore Team");
+
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(recipientEmail);
+        message.setSubject(subject);
+        message.setText(messageBody.toString());
+
+        mailSender.send(message);
+    }
+}
