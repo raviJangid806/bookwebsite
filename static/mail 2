@@ -1,0 +1,65 @@
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
+
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
+@Service
+public class EmailService {
+
+    @Autowired
+    private JavaMailSender mailSender;
+
+    public void sendOrderConfirmationEmail(String recipientEmail, String orderId, String customerName, BookOrder[] bookOrders) throws MessagingException {
+        String subject = "Order Confirmation - Your Order #" + orderId + " is Successful";
+        StringBuilder messageBody = new StringBuilder();
+
+        messageBody.append("<html><body>")
+                .append("<p>Dear ").append(customerName).append(",</p>")
+                .append("<p>Thank you for your order! We're excited to let you know that your order has been successfully placed.</p>")
+                .append("<p>Here are the details of your order:</p>")
+                .append("<table style='border-collapse: collapse; width: 100%;' border='1'>")
+                .append("<thead>")
+                .append("<tr>")
+                .append("<th style='padding: 8px; text-align: left;'>Book Name</th>")
+                .append("<th style='padding: 8px; text-align: left;'>Quantity</th>")
+                .append("<th style='padding: 8px; text-align: left;'>Price per Book</th>")
+                .append("<th style='padding: 8px; text-align: left;'>Total Price</th>")
+                .append("</tr>")
+                .append("</thead>")
+                .append("<tbody>");
+
+        double grandTotal = 0.0;
+
+        for (BookOrder book : bookOrders) {
+            double totalPrice = book.getQuantity() * book.getPricePerBook();
+            grandTotal += totalPrice;
+            messageBody.append("<tr>")
+                    .append("<td style='padding: 8px;'>").append(book.getBookName()).append("</td>")
+                    .append("<td style='padding: 8px;'>").append(book.getQuantity()).append("</td>")
+                    .append("<td style='padding: 8px;'>").append(String.format("%.2f", book.getPricePerBook())).append("</td>")
+                    .append("<td style='padding: 8px;'>").append(String.format("%.2f", totalPrice)).append("</td>")
+                    .append("</tr>");
+        }
+
+        messageBody.append("</tbody>")
+                .append("</table>")
+                .append("<p><strong>Grand Total: ").append(String.format("%.2f", grandTotal)).append("</strong></p>")
+                .append("<p>Order ID: ").append(orderId).append("</p>")
+                .append("<p>We will notify you once your order has been shipped.</p>")
+                .append("<p>If you have any questions, feel free to contact our support team.</p>")
+                .append("<p>Best regards,<br>Bookstore Team</p>")
+                .append("</body></html>");
+
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, true);
+
+        helper.setTo(recipientEmail);
+        helper.setSubject(subject);
+        helper.setText(messageBody.toString(), true); // Set the email content as HTML
+
+        mailSender.send(message);
+    }
+}
