@@ -1,0 +1,53 @@
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
+
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
+@Service
+public class EmailService {
+
+    @Autowired
+    private JavaMailSender mailSender;
+
+    public void sendAlertEmailToSeller(String recipientEmail, String sellerName, String[] issueDetails) throws MessagingException {
+        String subject = "Urgent: Inappropriate Book Entries Detected";
+
+        StringBuilder messageBody = new StringBuilder();
+        messageBody.append("<html><body>")
+                .append("<p>Dear ").append(sellerName).append(",</p>")
+                .append("<p>We have identified issues with some of the book entries you submitted to our platform. Please review the details below:</p>")
+                .append("<table style='border-collapse: collapse; width: 100%;' border='1'>")
+                .append("<thead>")
+                .append("<tr>")
+                .append("<th style='padding: 8px; text-align: left;'>Issue Details</th>")
+                .append("</tr>")
+                .append("</thead>")
+                .append("<tbody>");
+
+        for (String issue : issueDetails) {
+            messageBody.append("<tr>")
+                    .append("<td style='padding: 8px;'>").append(issue).append("</td>")
+                    .append("</tr>");
+        }
+
+        messageBody.append("</tbody>")
+                .append("</table>")
+                .append("<p>We request you to rectify the above issues at the earliest to ensure the quality and accuracy of your listings.</p>")
+                .append("<p>If you have any questions or need assistance, please feel free to reach out to our support team.</p>")
+                .append("<p>Thank you for your cooperation.</p>")
+                .append("<p>Best regards,<br>Bookstore Quality Assurance Team</p>")
+                .append("</body></html>");
+
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, true);
+
+        helper.setTo(recipientEmail);
+        helper.setSubject(subject);
+        helper.setText(messageBody.toString(), true); // Enable HTML content
+
+        mailSender.send(message);
+    }
+}
