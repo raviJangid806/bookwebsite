@@ -1,0 +1,26 @@
+CREATE TABLE AllDataTypesTest (
+    -- Boolean Data Type
+    BoolFlag BOOLEAN,
+
+    -- Graphic String Data Types (for Unicode and DBCS support)
+    FixedGraphic GRAPHIC(20),
+    VarGraphic VARGRAPHIC(100),
+    LargeDBCS DBCLOB(2M),
+
+    -- XML Data Type
+    XmlData XML,
+
+    -- Row ID Type (Needs NOT NULL and DEFAULT)
+    RowId ROWID NOT NULL GENERATED ALWAYS
+);
+INSERT INTO AllDataTypesTest (
+    BoolFlag, FixedGraphic, VarGraphic, LargeDBCS, XmlData
+) VALUES 
+(
+    TRUE, 'FixedText123', 'Variable Graphic Text', 'Large DBCS Text Data',
+    XMLPARSE(DOCUMENT '<note><to>User</to><message>Hello, DB2!</message></note>')
+),
+(
+    FALSE, 'FixedText456', 'Another Graphic Text', 'Another Large DBCS Text',
+    XMLPARSE(DOCUMENT '<data><id>101</id><value>Test XML</value></data>')
+);
