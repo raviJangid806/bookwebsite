@@ -1,0 +1,39 @@
+CREATE TABLE DataTypeTest (
+    -- Numeric Data Types
+    Id INT PRIMARY KEY,
+    SmallNum SMALLINT,
+    BigNum BIGINT,
+    DecimalNum DECIMAL(10,2),
+    RealNum REAL,
+    DoubleNum DOUBLE,
+
+    -- Character and String Data Types
+    FixedText CHAR(50),
+    VarText VARCHAR(255),
+    LargeText CLOB,
+
+    -- Binary Data Types
+    BinaryData BLOB,
+
+    -- Date and Time Data Types
+    BirthDate DATE,
+    EventTime TIME,
+    FullTimestamp TIMESTAMP
+);
+
+
+INSERT INTO DataTypeTest (
+    Id, SmallNum, BigNum, DecimalNum, RealNum, DoubleNum, 
+    FixedText, VarText, LargeText, BinaryData, 
+    BirthDate, EventTime, FullTimestamp
+) VALUES 
+(
+    1, 100, 9223372036854775807, 12345.67, 12.34, 123456.789, 
+    'FixedString1', 'Variable String Example 1', 'This is a large text data 1.', NULL, 
+    '2024-03-11', '12:30:45', '2024-03-11 12:30:45.123456'
+),
+(
+    2, -250, -9223372036854775808, 98765.43, 56.78, 987654.321, 
+    'FixedString2', 'Variable String Example 2', 'This is a large text data 2.', NULL, 
+    '2025-05-20', '18:45:30', '2025-05-20 18:45:30.654321'
+);
