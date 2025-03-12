@@ -1,0 +1,21 @@
+CREATE TABLE JulianDateTest (
+    Id INT PRIMARY KEY,
+    StandardDate DATE,
+    JulianDayNumber INT
+);
+
+
+INSERT INTO JulianDateTest (Id, StandardDate, JulianDayNumber)
+VALUES 
+(
+    1, 
+    DATE('0001-01-01') + (752835 - 1) DAYS,  -- Convert Julian to DATE
+    752835  -- Julian day number for 2025-03-11
+),
+(
+    2, 
+    DATE('0001-01-01') + (2451545 - 1) DAYS,  -- Julian date for 2000-01-01
+    2451545
+);
+
+SELECT * FROM JulianDateTest;
